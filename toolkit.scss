@@ -1,0 +1,13 @@
+// Simple shadow mixin for any box or text shadow
+@mixin simple-shadow($shadowType: 'box-shadow', $shH:2px, $shV:2px, $shB:1px, $shS:0, $shColor:#000, $inset:0){
+	// Box shadow default, horizontal offset, vertical offset, blur, spread, shadow color, inset
+	@if $shadowType=='text-shadow' {
+		text-shadow: $shH $shV $shB rgba($shColor,.4);
+	} @else if $inset != 0 { 
+		// if you set a value other than 0 for inset
+		box-shadow: inset $inset $shH $shV $shB $shS rgba($shColor,.4);
+	} @else {
+		// otherwise there will not be an inset
+		box-shadow: $shH $shV $shB $shS rgba($shColor,.4);
+	}
+}
